@@ -81,13 +81,13 @@ export default function App() {
         <section id="estimator" className="py-16 sm:py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-              Predictive Cost Calculator
+              Cost Estimator
             </span>
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
-              Calculate Your Personalized Cost Estimate
+              Calculate Your Cost Estimate
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Enter your demographic and health indicators below to receive an instant, data-driven medical insurance cost estimate.
+              Enter your demographic and health indicators below to receive a regression-based medical insurance cost estimate.
             </p>
           </div>
 

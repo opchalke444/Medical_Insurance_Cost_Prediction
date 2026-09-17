@@ -67,13 +67,13 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
       {/* Header with Quick Fill Examples */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-6">
         <div>
-          <h2 className="text-xl font-bold text-slate-900">Personal Health & Demographic Profile</h2>
-          <p className="text-sm text-slate-500 mt-0.5">Enter your basic details below to estimate annual medical insurance charges.</p>
+          <h2 className="text-xl font-bold text-slate-900">Model Inputs & Demographic Attributes</h2>
+          <p className="text-sm text-slate-500 mt-0.5">Enter demographic and health indicators to estimate annual insurance costs.</p>
         </div>
 
         {/* Quick Fill Options */}
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-xs font-semibold text-slate-400 uppercase mr-1">Sample Profiles:</span>
+          <span className="text-xs font-semibold text-slate-400 uppercase mr-1">Example Inputs:</span>
           {EXAMPLES.map((ex, idx) => (
             <button
               key={idx}
@@ -110,7 +110,7 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
             <div>
               <div className="flex justify-between items-center mb-1.5">
                 <label htmlFor="age-input" className="text-sm font-medium text-slate-700">
-                  Your Age
+                  Age in years
                 </label>
                 <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">
                   {formData.age} years old
@@ -120,16 +120,16 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
                 id="age-input"
                 type="range"
                 min="18"
-                max="85"
+                max="64"
                 step="1"
                 value={formData.age}
                 onChange={(e) => handleChange('age', parseInt(e.target.value, 10))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
               />
               <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                <span>18 yrs</span>
+                <span>18 yrs (dataset min)</span>
                 <span>40 yrs</span>
-                <span>65+ yrs</span>
+                <span>64 yrs (dataset max)</span>
               </div>
               {validationErrors.age && (
                 <p className="text-xs text-red-600 mt-1">{validationErrors.age}</p>
@@ -139,7 +139,7 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
             {/* Sex */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Biological Sex
+                Biological Sex <span className="text-xs text-slate-400 font-normal">(as recorded in dataset)</span>
               </label>
               <div className="grid grid-cols-2 gap-3">
                 {['male', 'female'].map((option) => (
@@ -163,7 +163,7 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
             <div>
               <div className="flex justify-between items-center mb-1.5">
                 <label htmlFor="children-input" className="text-sm font-medium text-slate-700">
-                  Covered Dependents (Children)
+                  Covered Dependents <span className="text-xs text-slate-400 font-normal">(children: 0 to 5)</span>
                 </label>
                 <span className="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">
                   {formData.children} {formData.children === 1 ? 'dependent' : 'dependents'}
@@ -216,7 +216,7 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
                   {formData.bmi.toFixed(1)} kg/m² ({
                     formData.bmi < 18.5 ? 'Underweight' :
                     formData.bmi <= 24.9 ? 'Normal weight' :
-                    formData.bmi <= 29.9 ? 'Overweight' : 'Obesity category'
+                    formData.bmi <= 29.9 ? 'Overweight' : 'Obese category'
                   })
                 </span>
               </div>
@@ -247,7 +247,7 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
             {/* Tobacco / Smoker Status */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                Do you smoke tobacco?
+                Smoking status in the dataset
               </label>
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -278,7 +278,7 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
             {/* US Region */}
             <div>
               <label htmlFor="region-select" className="block text-sm font-medium text-slate-700 mb-1.5">
-                Residential Region (US)
+                Residential region represented in the dataset
               </label>
               <select
                 id="region-select"
@@ -295,11 +295,11 @@ export default function PredictionForm({ onSubmit, isLoading, error }) {
           </div>
         </div>
 
-        {/* Submit Action & Ethics Assurance */}
+        {/* Submit Action & Privacy Assurance */}
         <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center text-xs text-slate-500 space-x-1.5">
             <Lock className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-            <span>Strict Privacy: Inputs are processed in-memory and never saved to a database.</span>
+            <span>The application does not intentionally store prediction inputs in a database.</span>
           </div>
 
           <button

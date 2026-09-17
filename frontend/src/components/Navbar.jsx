@@ -1,5 +1,4 @@
-import React from 'react';
-import { Activity, ShieldCheck, Lock } from 'lucide-react';
+import { Activity } from 'lucide-react';
 
 export default function Navbar({ serverStatus }) {
   const isHealthy = serverStatus?.status === 'healthy' && serverStatus?.model_loaded;
@@ -16,7 +15,7 @@ export default function Navbar({ serverStatus }) {
             <div>
               <span className="font-bold text-lg text-slate-900 tracking-tight">MedCost<span className="text-blue-600">.AI</span></span>
               <span className="hidden sm:inline-block ml-2 px-2 py-0.5 text-xs font-semibold bg-slate-100 text-slate-700 rounded-full border border-slate-200">
-                Healthcare Cost Intelligence
+                Academic ML Project
               </span>
             </div>
           </div>
@@ -24,25 +23,21 @@ export default function Navbar({ serverStatus }) {
           {/* User Navigation Links */}
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#estimator" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
-              Cost Estimator
+              Estimator
             </a>
             <a href="#factors" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
-              Key Cost Factors
+              Cost Factors
             </a>
-            <a href="#transparency" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
-              Model Transparency
+            <a href="#performance" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
+              Model Performance
             </a>
             <a href="#faq" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
-              FAQ & Ethics
+              FAQ
             </a>
           </nav>
 
-          {/* Privacy & System Status */}
+          {/* System Status */}
           <div className="flex items-center space-x-3">
-            <div className="hidden lg:flex items-center text-xs text-slate-600 space-x-1 font-medium">
-              <Lock className="w-3.5 h-3.5 text-emerald-600" />
-              <span>100% Confidential</span>
-            </div>
             <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${
               isHealthy
                 ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
