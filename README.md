@@ -11,17 +11,6 @@ An academic full-stack machine learning application designed to predict annual m
 
 ---
 
-## 📌 Quick Links
-
-- 🌐 **Live Web Application:** [Medical Insurance Cost Predictor](https://medical-insurance-cost-prediction-u-beta.vercel.app/)
-- 📖 **Interactive API Documentation:** [Swagger UI (/docs)](https://medical-insurance-cost-prediction-u-beta.vercel.app/docs)
-- 🔬 **Research Notebook:** [`notebooks/Medical_Insurance_Cost_Prediction_Third_Year_FINAL.ipynb`](notebooks/Medical_Insurance_Cost_Prediction_Third_Year_FINAL.ipynb)
-- 🧪 **Automated Test Suite (26 Tests):** [`tests/`](tests/)
-- 🎓 **Viva Voce Defense Guide:** [`docs/VIVA_QUESTIONS.md`](docs/VIVA_QUESTIONS.md)
-- ⚠️ **Project Limitations Document:** [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md)
-
----
-
 ## 1. Project Overview
 
 In health insurance economics, accurate claims forecasting is critical for fair premium computation, risk categorization, and identifying health disparities.
@@ -70,7 +59,6 @@ All three project models were evaluated on the exact same held-out test split ($
 | **Backend** | Python 3.11, FastAPI, Uvicorn, Pydantic v2 | High-speed REST API, schema validation, CORS security |
 | **Machine Learning** | scikit-learn, pandas, numpy, joblib | Leakage-free Pipeline, ColumnTransformer, 5-fold CV |
 | **Testing** | pytest, FastAPI TestClient, httpx | 26 automated tests covering API, ML, and validation |
-| **Deployment** | Vercel Serverless | Automated Git deployment, zero-config FastAPI serving |
 
 ---
 
@@ -129,7 +117,7 @@ All three project models were evaluated on the exact same held-out test split ($
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/opchalke444/Medical_Insurance_Cost_Prediction.git
+git clone <repository-url>
 cd Medical_Insurance_Cost_Prediction
 ```
 
@@ -166,9 +154,9 @@ python -m pytest -v
 python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-- **Web Application:** Open [http://127.0.0.1:8000](http://127.0.0.1:8000)
-- **Interactive Swagger Docs:** Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **Health Probe:** Open [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
+- **Web Application:** Open `http://127.0.0.1:8000`
+- **Interactive Swagger Docs:** Open `http://127.0.0.1:8000/docs`
+- **Health Probe:** Open `http://127.0.0.1:8000/health`
 
 ---
 
@@ -188,7 +176,7 @@ python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
 ### Example Prediction Request
 
 ```bash
-curl -X POST "https://medical-insurance-cost-prediction-u-beta.vercel.app/api/v1/predict" \
+curl -X POST "http://127.0.0.1:8000/api/v1/predict" \
   -H "Content-Type: application/json" \
   -d '{
     "age": 35,
@@ -239,16 +227,14 @@ Inputs to `/api/v1/predict` are strictly validated by Pydantic v2:
 
 ## 8. Academic Viva Voce & Presentation Guide
 
-For college examination and project defense, refer to the curated documentation:
-- 📋 [**Viva Voce Questions & Answers**](docs/VIVA_QUESTIONS.md) — Common professor questions regarding train/test splitting, why KNN outperforms Linear/Ridge on this dataset, feature scaling, and evaluation metrics.
-- 🔬 [**Mathematical Methodology**](docs/ML_METHODOLOGY.md) — Equations for OLS, Ridge L2 penalty, and Euclidean distance KNN.
-- ⚖️ [**Limitations & Ethical Considerations**](docs/LIMITATIONS.md) — Discussion of real-world underwriting boundaries and demographic bias.
+For college examination and project defense, refer to the curated documentation in `docs/`:
+- **Viva Voce Questions & Answers:** `docs/VIVA_QUESTIONS.md`
+- **Mathematical Methodology:** `docs/ML_METHODOLOGY.md`
+- **Limitations & Ethical Considerations:** `docs/LIMITATIONS.md`
+- **Test Suite Documentation:** `tests/README.md`
 
 ---
 
-## 9. License & Attribution
+## 9. License & Academic Attribution
 
-This project is created for academic research, university examination, and demonstration purposes.
-
-**Author:** Omkar Prakash Chalke ([@opchalke444](https://github.com/opchalke444))  
-**Academic Degree:** Final-Year Engineering Project
+This project is developed for academic research, university examination, and educational demonstration purposes. Released under the MIT License.
