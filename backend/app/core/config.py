@@ -3,10 +3,9 @@ from typing import List
 from pydantic import BaseModel
 
 def _get_cors_origins() -> List[str]:
-    raw = os.getenv(
-        "CORS_ORIGINS",
-        "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000"
-    )
+    raw = os.getenv("CORS_ORIGINS", "*")
+    if raw.strip() == "*":
+        return ["*"]
     return [origin.strip() for origin in raw.split(",") if origin.strip()]
 
 class Settings(BaseModel):

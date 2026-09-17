@@ -55,6 +55,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
+    allow_origin_regex=r"https?://.*",
     allow_credentials=False,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type", "Accept", "Authorization"],
@@ -87,9 +88,22 @@ def root_info():
         "api_v1": settings.API_V1_STR
     }
 
-# Mount frontend production build if available
-frontend_dist = os.path.abspath(os.path.join(_root_dir, "frontend", "dist"))
-if os.path.exists(frontend_dist) and os.path.isdir(frontend_dist):
+# Robust search for frontend production build across execution contexts
+def _find_frontend_dist():
+    candidates = [
+        os.path.abspath(os.path.join(_root_dir, "frontend", "dist")),
+        os.path.abspath(os.path.join(_backend_dir, "..", "frontend", "dist")),
+        os.path.abspath(os.path.join(os.getcwd(), "frontend", "dist")),
+        os.path.abspath("frontend/dist"),
+        os.path.abspath("dist"),
+    ]
+    for c in candidates:
+        if os.path.exists(c) and os.path.isdir(c) and os.path.exists(os.path.join(c, "index.html")):
+            return c
+    return None
+
+frontend_dist = _find_frontend_dist()
+if frontend_dist:
     app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
 else:
     @app.get("/", tags=["Root"])
