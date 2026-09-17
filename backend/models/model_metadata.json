@@ -1,0 +1,299 @@
+{
+  "model_name": "KNN Regression (k=9)",
+  "model_version": "1.0.0",
+  "model_type": "KNeighborsRegressor",
+  "task": "regression",
+  "target": "charges",
+  "canonical_path": "backend/models/model.pkl",
+  "checksum_sha256": "6e002b46b80a3ce38567b002497082ddf2f16f7e92ce0716bc45c1a10d08c1ae",
+  "training_date": "2026-09-17 11:19:09",
+  "random_state": 42,
+  "model_selection_rationale": {
+    "selected_best_model": "KNN Regression (k=9)",
+    "test_r2": 0.8185,
+    "test_mae": 3632.17,
+    "rationale": "Among the three project models (Linear Regression, Ridge Regression, and KNN Regression), KNN Regression (k=9) achieves the highest predictive accuracy (Test R\u00b2 = 0.8185, MAE = $3,632.17), outperforming Linear Regression (R\u00b2 = 0.8069) and Ridge Regression (R\u00b2 = 0.8067) by capturing non-linear interactions between demographic indicators such as smoking and high BMI."
+  },
+  "dataset": {
+    "total_samples": 1337,
+    "train_samples": 1069,
+    "test_samples": 268,
+    "duplicates_removed": 1,
+    "feature_columns": [
+      "age",
+      "bmi",
+      "children",
+      "sex",
+      "smoker",
+      "region"
+    ],
+    "numerical_features": [
+      "age",
+      "bmi",
+      "children"
+    ],
+    "categorical_features": [
+      "sex",
+      "smoker",
+      "region"
+    ]
+  },
+  "hyperparameter_search": {
+    "ridge": {
+      "searched_alphas": [
+        0.01,
+        0.1,
+        1.0,
+        10.0,
+        100.0,
+        1000.0
+      ],
+      "best_alpha": 1.0,
+      "results": [
+        {
+          "alpha": 0.01,
+          "cv_r2": 0.722784572370107,
+          "cv_r2_std": 0.028258728570364787,
+          "cv_mae": 4221.975612426879,
+          "cv_rmse": 6123.65102441031
+        },
+        {
+          "alpha": 0.1,
+          "cv_r2": 0.7227856087323696,
+          "cv_r2_std": 0.028250675077892102,
+          "cv_mae": 4222.086397083668,
+          "cv_rmse": 6123.648799220091
+        },
+        {
+          "alpha": 1.0,
+          "cv_r2": 0.7227949933537966,
+          "cv_r2_std": 0.02817029047533537,
+          "cv_mae": 4223.194887417261,
+          "cv_rmse": 6123.637224051995
+        },
+        {
+          "alpha": 10.0,
+          "cv_r2": 0.722793377316717,
+          "cv_r2_std": 0.027381240181481897,
+          "cv_mae": 4234.596911074307,
+          "cv_rmse": 6124.562237147346
+        },
+        {
+          "alpha": 100.0,
+          "cv_r2": 0.7152540830059767,
+          "cv_r2_std": 0.020771870591256462,
+          "cv_mae": 4389.9826432627,
+          "cv_rmse": 6214.9822607112155
+        },
+        {
+          "alpha": 1000.0,
+          "cv_r2": 0.5110921137926304,
+          "cv_r2_std": 0.006114778952424765,
+          "cv_mae": 5941.482236795067,
+          "cv_rmse": 8163.254022905766
+        }
+      ]
+    },
+    "knn": {
+      "searched_ks": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        15,
+        21,
+        31
+      ],
+      "best_k": 9,
+      "results": [
+        {
+          "k": 3,
+          "cv_r2": 0.7553842108135507,
+          "cv_r2_std": 0.03966922706933413,
+          "cv_mae": 3467.291293607096,
+          "cv_rmse": 5734.814077472157
+        },
+        {
+          "k": 5,
+          "cv_r2": 0.7663515520082516,
+          "cv_r2_std": 0.030989551759581343,
+          "cv_mae": 3448.6300081242334,
+          "cv_rmse": 5609.864156231197
+        },
+        {
+          "k": 7,
+          "cv_r2": 0.7633115818179723,
+          "cv_r2_std": 0.03261073968327015,
+          "cv_mae": 3508.2167330435127,
+          "cv_rmse": 5643.18652894546
+        },
+        {
+          "k": 9,
+          "cv_r2": 0.767298598787812,
+          "cv_r2_std": 0.0253532374872081,
+          "cv_mae": 3479.2182580024964,
+          "cv_rmse": 5605.238427073688
+        },
+        {
+          "k": 11,
+          "cv_r2": 0.7618035937452191,
+          "cv_r2_std": 0.02755619244464602,
+          "cv_mae": 3542.7611641799035,
+          "cv_rmse": 5669.162266260193
+        },
+        {
+          "k": 15,
+          "cv_r2": 0.7528059635857666,
+          "cv_r2_std": 0.02146311137356773,
+          "cv_mae": 3622.829957290366,
+          "cv_rmse": 5785.465102374086
+        },
+        {
+          "k": 21,
+          "cv_r2": 0.7356538211080815,
+          "cv_r2_std": 0.018047671190920836,
+          "cv_mae": 3792.3252665826885,
+          "cv_rmse": 5987.719084628849
+        },
+        {
+          "k": 31,
+          "cv_r2": 0.7029146345094579,
+          "cv_r2_std": 0.014103924766229261,
+          "cv_mae": 4042.99082342498,
+          "cv_rmse": 6353.758803363836
+        }
+      ]
+    }
+  },
+  "selected_hyperparameters": {
+    "n_neighbors": 9,
+    "weights": "uniform",
+    "metric": "minkowski",
+    "p": 2
+  },
+  "metrics": {
+    "model_name": "KNN Regression (k=9)",
+    "train_r2": 0.8234451512248133,
+    "test_r2": 0.8184603390735082,
+    "cv_r2_mean": 0.767298598787812,
+    "cv_r2_std": 0.0253532374872081,
+    "cv_mae": 3479.2182580024964,
+    "cv_rmse": 5605.238427073688,
+    "test_mae": 3632.1662128776948,
+    "test_rmse": 5775.726236518477
+  },
+  "model_comparison": [
+    {
+      "model_name": "Linear Regression",
+      "train_r2": 0.7299057809339075,
+      "test_r2": 0.8069287081198013,
+      "cv_r2_mean": 0.7227844561171829,
+      "cv_r2_std": 0.028259623571844632,
+      "cv_mae": 4221.963301620318,
+      "cv_rmse": 6123.651283667274,
+      "test_mae": 4177.045561036322,
+      "test_rmse": 5956.342894363585
+    },
+    {
+      "model_name": "Ridge Regression (alpha=1.0)",
+      "train_r2": 0.7299051033041127,
+      "test_r2": 0.8067412087126404,
+      "cv_r2_mean": 0.7227949933537966,
+      "cv_r2_std": 0.02817029047533537,
+      "cv_mae": 4223.194887417261,
+      "cv_rmse": 6123.637224051995,
+      "test_mae": 4179.621622409948,
+      "test_rmse": 5959.234416290863
+    },
+    {
+      "model_name": "KNN Regression (k=9)",
+      "train_r2": 0.8234451512248133,
+      "test_r2": 0.8184603390735082,
+      "cv_r2_mean": 0.767298598787812,
+      "cv_r2_std": 0.0253532374872081,
+      "cv_mae": 3479.2182580024964,
+      "cv_rmse": 5605.238427073688,
+      "test_mae": 3632.1662128776948,
+      "test_rmse": 5775.726236518477
+    }
+  ],
+  "error_analysis": {
+    "percentiles": {
+      "p25": 805.5301730555566,
+      "p50_median": 1943.7594527777774,
+      "p75": 4480.889494166666,
+      "p90": 10340.281085444449,
+      "max": 25658.140453333333
+    },
+    "by_smoker": {
+      "no": {
+        "count": 208,
+        "mean_actual": 8202.99277658173,
+        "mean_predicted": 8406.85086659188,
+        "mae": 2636.0942516030987,
+        "rmse": 4372.467001099116
+      },
+      "yes": {
+        "count": 60,
+        "mean_actual": 35311.258806,
+        "mean_predicted": 32534.543723407412,
+        "mae": 7085.215678629628,
+        "rmse": 9095.396598758049
+      }
+    },
+    "by_age_bracket": {
+      "18-30": {
+        "count": 87,
+        "mean_actual": 7399.019025045977,
+        "mean_predicted": 8823.38431844189,
+        "mae": 3703.446264356321
+      },
+      "31-45": {
+        "count": 79,
+        "mean_actual": 17471.46263151899,
+        "mean_predicted": 16135.152560787626,
+        "mae": 3779.381997735584
+      },
+      "46-64": {
+        "count": 102,
+        "mean_actual": 17656.25316490196,
+        "mean_predicted": 16258.68740832244,
+        "mae": 3457.3484532461875
+      }
+    },
+    "by_bmi_category": {
+      "Underweight (<18.5)": {
+        "count": 6,
+        "mean_actual": 13379.348433333334,
+        "mean_predicted": 13299.000510185186,
+        "mae": 3473.3922287037044
+      },
+      "Normal (18.5-24.9)": {
+        "count": 39,
+        "mean_actual": 9491.879350000001,
+        "mean_predicted": 11451.398996951566,
+        "mae": 2153.972147863248
+      },
+      "Overweight (25-29.9)": {
+        "count": 68,
+        "mean_actual": 11564.392554985294,
+        "mean_predicted": 12005.304834362745,
+        "mae": 4226.594625949346
+      },
+      "Obese (>=30)": {
+        "count": 155,
+        "mean_actual": 16697.160947741933,
+        "mean_predicted": 15212.505232107527,
+        "mae": 3749.4635054695345
+      }
+    }
+  },
+  "environment": {
+    "python": "3.11",
+    "scikit_learn": "1.9.1",
+    "joblib": "1.6.0",
+    "pandas": "3.0.5",
+    "numpy": "2.4.6"
+  }
+}

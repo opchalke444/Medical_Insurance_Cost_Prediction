@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.pkl
+!backend/models/model.pkl
+*.egg-info/
+build/
+dist/
+
+# Node / Frontend
+node_modules/
+dist-ssr/
+*.local
+!frontend/dist/
+!frontend/dist/**
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+scratch/
